@@ -644,7 +644,7 @@ class MemoSynthesisSettingTab extends obsidian.PluginSettingTab {
     display() {
         const { containerEl } = this;
         containerEl.empty();
-        containerEl.createEl('h2', { text: '메모 통합 발전 설정' });
+        containerEl.createEl('h2', { text: 'Memo Synthesis Settings' });
 
         // API 키 안내 배너
         const banner = containerEl.createEl('div');
@@ -739,17 +739,17 @@ class MemoSynthesisPlugin extends obsidian.Plugin {
 
         this.addCommand({
             id: 'run-memo-synthesis',
-            name: '메모 통합 발전 실행',
+            name: 'Run Memo Synthesis',
             callback: () => this.runSynthesis(),
         });
 
         this.addCommand({
             id: 'run-memo-synthesis-switch-api',
-            name: '메모 통합 발전 (API 선택 후 실행)',
+            name: 'Run Memo Synthesis (select API)',
             callback: () => this.runSynthesisWithApiSelect(),
         });
 
-        this.addRibbonIcon('brain', '메모 통합 발전', () => this.runSynthesis());
+        this.addRibbonIcon('brain', 'Memo Synthesis', () => this.runSynthesis());
 
         // LEET 기출 참고 파일 자동 생성 (최초 설치 시)
         this.ensureLeetKichulFolder();

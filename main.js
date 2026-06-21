@@ -863,7 +863,7 @@ ${data.passage}
             body: JSON.stringify({
                 model,
                 messages: [{ role: 'user', content: prompt }],
-                max_tokens: 4096,
+                max_tokens: 8192,
             }),
         });
         const data = await res.json();
@@ -881,7 +881,7 @@ ${data.passage}
             body: JSON.stringify({
                 model,
                 messages: [{ role: 'user', content: prompt }],
-                max_tokens: compact ? 100 : 4096,
+                max_tokens: compact ? 100 : 8192,
                 temperature: compact ? 0.2 : 0.7,
             }),
         });
@@ -1405,14 +1405,12 @@ ${memoContentsRaw}
 `당신은 LEET 언어이해 문제 출제 전문가입니다.
 아래 지문을 읽고 문제 3개, 선택지, 정답, 해설을 완성하세요.
 반드시 아래 형식 그대로, 끊김 없이 끝까지 작성하세요.
+지문 내용을 절대로 다시 출력하지 마세요. 문제와 해설만 출력하세요.
 
---- 지문 ---
+[지문]
 ${passage}
-------------
 
-출력 형식 (이 형식 그대로):
-
----
+출력 형식 (이 형식 그대로, 지문 없이 문제부터 시작):
 
 **1. 윗글의 내용과 일치하는 것은?**
 
@@ -1506,6 +1504,8 @@ tags: [LEET, 언어이해, 연습문제]
 **[1~3] 다음 글을 읽고 물음에 답하시오.**
 
 ${passage}
+
+---
 
 ${questions}
 
